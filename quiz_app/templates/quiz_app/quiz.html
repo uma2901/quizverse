@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizVerse | {{ category.name }}</title>
+    <link rel="stylesheet" href="{% static 'quiz_app/style.css' %}">
+</head>
+<body>
+    <div class="wrapper wrapper-wide">
+        <header>
+            <h1>{{ category.name }}</h1>
+            <p class="subtitle">Good luck, {{ player_name }}! Answer all {{ questions|length }} questions below.</p>
+        </header>
+        <form method="POST" action="{% url 'submit_quiz' category.id %}" id="quizForm">
+            {% csrf_token %}
+            {% for question in questions %}
+                <div class="question-card">
+                    <p class="question-text">{{ forloop.counter }}. {{ question.text }}</p>
+                    <div class="options">
+                        {% for key, text in question.options %}
+                            <label class="option-label">
+                                <input type="radio" name="question_{{ question.id }}" value="{{ key }}" required>
+                                <span>{{ key }}. {{ text }}</span>
+                            </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit" class="submit-btn">Submit Quiz</button>
+        </form>
+    </div>
+</body>
+</html>

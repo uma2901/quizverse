@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizVerse</title>
+    <link rel="stylesheet" href="{% static 'quiz_app/style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>🧠 QuizVerse</h1>
+            <p class="subtitle">Test your knowledge across different topics</p>
+        </header>
+
+        {% if error %}
+            <div class="alert error">⚠️ {{ error }}</div>
+        {% endif %}
+
+        <div class="card">
+            <form method="POST" action="{% url 'start_quiz' %}">
+                {% csrf_token %}
+                <label for="player_name">Your Name</label>
+                <input type="text" id="player_name" name="player_name" placeholder="Enter your name" required>
+                <label for="category">Choose a Category</label>
+                <select id="category" name="category" required>
+                    <option value="" disabled selected>Select a topic</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }} ({{ category.questions.count }} questions)</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Start Quiz</button>
+            </form>
+            <a href="{% url 'leaderboard' %}" class="leaderboard-link">🏆 View Leaderboard</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizVerse | Leaderboard</title>
+    <link rel="stylesheet" href="{% static 'quiz_app/style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>🏆 Leaderboard</h1>
+            <p class="subtitle">Top 10 scores across all quizzes</p>
+        </header>
+        <div class="card">
+            {% if top_attempts %}
+                <table class="leaderboard-table">
+                    <thead><tr><th>#</th><th>Name</th><th>Category</th><th>Score</th><th>Date</th></tr></thead>
+                    <tbody>
+                        {% for attempt in top_attempts %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ attempt.player_name }}</td>
+                                <td>{{ attempt.category.name }}</td>
+                                <td>{{ attempt.score }}/{{ attempt.total_questions }} ({{ attempt.percentage }}%)</td>
+                                <td>{{ attempt.taken_at|date:"d M, H:i" }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="empty-message">No quiz attempts yet. Be the first to play!</p>
+            {% endif %}
+            <a href="{% url 'home' %}" class="leaderboard-link">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

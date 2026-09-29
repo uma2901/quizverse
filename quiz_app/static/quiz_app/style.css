@@ -1,0 +1,46 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 40px 15px;
+}
+.wrapper { width: 100%; max-width: 480px; }
+.wrapper-wide { width: 100%; max-width: 700px; }
+header { text-align: center; color: #fff; margin-bottom: 25px; }
+header h1 { font-size: 2rem; font-weight: 700; }
+.subtitle { opacity: 0.85; font-size: 0.9rem; margin-top: 6px; }
+.alert.error { background: #fff3f3; color: #c0392b; padding: 14px 16px; border-radius: 10px; margin-bottom: 20px; font-size: 0.92rem; border-left: 4px solid #e74c3c; }
+.card { background: #fff; border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.card label { display: block; font-size: 0.85rem; font-weight: 600; color: #555; margin-bottom: 6px; margin-top: 16px; }
+.card label:first-of-type { margin-top: 0; }
+.card input[type="text"], .card select { width: 100%; padding: 12px 14px; border: 1px solid #ddd; border-radius: 10px; font-size: 1rem; outline: none; font-family: inherit; }
+.card input[type="text"]:focus, .card select:focus { border-color: #4e4376; }
+.card button { width: 100%; margin-top: 22px; padding: 14px; border: none; border-radius: 10px; background: #2b5876; color: #fff; font-weight: 600; font-size: 1rem; cursor: pointer; }
+.leaderboard-link { display: block; text-align: center; margin-top: 18px; color: #4e4376; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+.question-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 16px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+.question-text { font-weight: 600; color: #222; margin-bottom: 14px; font-size: 1rem; }
+.options { display: flex; flex-direction: column; gap: 10px; }
+.option-label { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; background: #f5f6fb; cursor: pointer; font-size: 0.92rem; color: #333; }
+.option-label input { accent-color: #2b5876; width: 16px; height: 16px; }
+.submit-btn { width: 100%; padding: 16px; border: none; border-radius: 12px; background: #2b5876; color: #fff; font-weight: 700; font-size: 1.05rem; cursor: pointer; margin-top: 8px; margin-bottom: 30px; }
+.score-card { background: #fff; border-radius: 16px; padding: 28px; text-align: center; margin-bottom: 26px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.score-label { color: #666; font-size: 0.95rem; }
+.score-value { font-size: 2.6rem; font-weight: 800; color: #2b5876; margin: 8px 0 4px; }
+.score-percentage { font-size: 1.2rem; font-weight: 600; color: #4e4376; }
+.score-category { margin-top: 10px; color: #999; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; }
+.review-heading { color: #fff; margin-bottom: 14px; font-size: 1.05rem; }
+.correct-card { border-left: 5px solid #27ae60; }
+.incorrect-card { border-left: 5px solid #e74c3c; }
+.option-review { padding: 10px 12px; border-radius: 8px; background: #f5f6fb; font-size: 0.9rem; color: #444; }
+.option-review.correct-answer { background: #eafaf1; color: #1e8449; font-weight: 600; }
+.option-review.wrong-answer { background: #fdedec; color: #c0392b; font-weight: 600; }
+.action-row { display: flex; gap: 12px; margin-top: 10px; margin-bottom: 30px; }
+.btn { flex: 1; text-align: center; padding: 14px; border-radius: 10px; background: #fff; color: #2b5876; font-weight: 700; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
+.btn-secondary { background: rgba(255,255,255,0.15); color: #fff; }
+.leaderboard-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.leaderboard-table th { text-align: left; padding: 10px 8px; background: #f5f6fb; color: #555; font-size: 0.78rem; text-transform: uppercase; }
+.leaderboard-table td { padding: 10px 8px; border-bottom: 1px solid #eee; color: #333; }
+.leaderboard-table tr:first-child td { font-weight: 700; color: #2b5876; }
+.empty-message { text-align: center; color: #999; padding: 20px 0; }

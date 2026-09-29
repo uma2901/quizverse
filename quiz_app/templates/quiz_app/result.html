@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizVerse | Your Results</title>
+    <link rel="stylesheet" href="{% static 'quiz_app/style.css' %}">
+</head>
+<body>
+    <div class="wrapper wrapper-wide">
+        <header><h1>Quiz Complete!</h1></header>
+        <div class="score-card">
+            <p class="score-label">{{ player_name }}, you scored</p>
+            <p class="score-value">{{ score }} / {{ total }}</p>
+            <p class="score-percentage">{{ percentage }}%</p>
+            <p class="score-category">{{ category.name }}</p>
+        </div>
+        <h3 class="review-heading">Review Your Answers</h3>
+        {% for item in results %}
+            <div class="question-card {% if item.is_correct %}correct-card{% else %}incorrect-card{% endif %}">
+                <p class="question-text">{{ forloop.counter }}. {{ item.question.text }}</p>
+                <div class="options">
+                    {% for key, text in item.question.options %}
+                        <div class="option-review
+                            {% if key == item.question.correct_option %}correct-answer{% endif %}
+                            {% if key == item.selected and not item.is_correct %}wrong-answer{% endif %}">
+                            {{ key }}. {{ text }}
+                            {% if key == item.question.correct_option %} ✓{% endif %}
+                            {% if key == item.selected and not item.is_correct %} ✗ (your answer){% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="action-row">
+            <a href="{% url 'home' %}" class="btn">Take Another Quiz</a>
+            <a href="{% url 'leaderboard' %}" class="btn btn-secondary">View Leaderboard</a>
+        </div>
+    </div>
+</body>
+</html>
